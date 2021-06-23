@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './PeopleList.module.scss'
+import PropTypes from 'prop-types'
 
 const PeopleList = ({ people }) => {
   return (
@@ -17,3 +18,7 @@ const PeopleList = ({ people }) => {
 }
 
 export default PeopleList
+
+PeopleList.propTypes = {
+  people: PropTypes.array.isRequired,
+}

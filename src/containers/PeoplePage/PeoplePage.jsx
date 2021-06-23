@@ -4,6 +4,7 @@ import { API_PEOPLE } from '@constants/api'
 import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
 import PeopleList from '@components/PeoplePage/PeopleList'
 import withErrorApi from '@HOC/withErrorApi'
+import PropTypes from 'prop-types'
 
 // import styles from './PeoplePage.module.scss'
 
@@ -30,7 +31,7 @@ const PeoplePage = ({ setErrorApi }) => {
       setErrorApi(true)
     }
   }
-  
+
   useEffect(() => {
     getResource(API_PEOPLE)
   }, [])
@@ -39,3 +40,7 @@ const PeoplePage = ({ setErrorApi }) => {
 }
 
 export default withErrorApi(PeoplePage)
+
+PeoplePage.propTypes = {
+  setErrorApi: PropTypes.func,
+}
