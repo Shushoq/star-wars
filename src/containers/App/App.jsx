@@ -1,5 +1,5 @@
 import React from 'react'
-import PeoplePage from '../PeoplePage/PeoplePage'
+import PeoplePage from '../PeoplePage'
 
 // import styles from './App.module.scss'
 

@@ -17,7 +17,6 @@ const PeoplePage = ({ setErrorApi }) => {
       const peopleList = res.results.map(({ name, url }) => {
         const id = getPeopleId(url)
         const image = getPeopleImage(id)
-        console.log(image)
         return {
           id,
           image,
@@ -31,9 +30,7 @@ const PeoplePage = ({ setErrorApi }) => {
       setErrorApi(true)
     }
   }
-
-  console.log(people)
-
+  
   useEffect(() => {
     getResource(API_PEOPLE)
   }, [])
