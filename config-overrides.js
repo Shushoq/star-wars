@@ -8,6 +8,8 @@ module.exports = function override(config, env) {
     '@HOC': 'src/HOC',
     '@services': 'src/services',
     '@containers': 'src/containers',
+    '@routes': 'src/routes',
+    '@static': 'src/static',
   })(config)
 
   return config

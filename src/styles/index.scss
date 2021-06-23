@@ -60,7 +60,7 @@
     #281b2e,
     #2b2440
   );
-  // --theme-neitral-bgimage: url(@static/bg.jpg);
+  --theme-neitral-bgimage: url('../static/bg.jpg');
   --theme-default-bgimage: var(--theme-neitral-bgimage);
 }
 
@@ -89,7 +89,8 @@ body {
 img {
   display: block;
 }
-.header__text {
+
+.title {
   line-height: 1.7;
   font-size: var(--font-size-header);
   text-shadow: 0 0 2px var(--color-black);
