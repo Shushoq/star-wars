@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from './PeopleList.module.scss'
 import PropTypes from 'prop-types'
+
+import styles from './PeopleList.module.scss'
 
 const PeopleList = ({ people }) => {
   return (

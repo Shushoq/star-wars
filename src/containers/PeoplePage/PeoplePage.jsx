@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+
+import withErrorApi from '@HOC/withErrorApi'
+import PeopleList from '@components/PeoplePage/PeopleList'
 import { getApiResource } from '@utils/network'
 import { API_PEOPLE } from '@constants/api'
 import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
-import PeopleList from '@components/PeoplePage/PeopleList'
-import withErrorApi from '@HOC/withErrorApi'
-import PropTypes from 'prop-types'
 
-// import styles from './PeoplePage.module.scss'
+import styles from './PeoplePage.module.scss'
 
 const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState([])
