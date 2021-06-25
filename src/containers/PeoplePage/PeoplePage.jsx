@@ -5,18 +5,23 @@ import withErrorApi from '@HOC/withErrorApi'
 import PeopleList from '@components/PeoplePage/PeopleList'
 import { getApiResource } from '@utils/network'
 import { API_PEOPLE } from '@constants/api'
-import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
+import {
+  getPeopleId,
+  getPeopleImage,
+  getPeoplePageId,
+} from '@services/getPeopleData'
 import useQueryParams from '@hooks/useQueryParams'
 
-import styles from './PeoplePage.module.scss'
+// import styles from './PeoplePage.module.scss'
 
 const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState([])
+  const [prevPage, setPrevPage] = useState(null)
+  const [nextPage, setNextPage] = useState(null)
+  const [counterPage, setCounterPage] = useState(1)
 
   const query = useQueryParams()
   const queryPage = query.get('page')
-
-  console.log(query, queryPage)
 
   const getResource = async (url) => {
     const res = await getApiResource(url)
@@ -33,6 +38,9 @@ const PeoplePage = ({ setErrorApi }) => {
         }
       })
       setPeople(peopleList)
+      setPrevPage(res.previous)
+      setNextPage(res.next)
+      setCounterPage(getPeoplePageId(url))
       setErrorApi(false)
     } else {
       setErrorApi(true)
@@ -40,8 +48,8 @@ const PeoplePage = ({ setErrorApi }) => {
   }
 
   useEffect(() => {
-    getResource(API_PEOPLE)
-  }, [])
+    getResource(API_PEOPLE + queryPage)
+  }, [queryPage])
 
   return <>{people && <PeopleList people={people} />}</>
 }
