@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import withErrorApi from '@HOC/withErrorApi'
 import PeopleList from '@components/PeoplePage/PeopleList'
+import PeopleNavigation from '@components/PeoplePage/PeopleNavigation'
 import { getApiResource } from '@utils/network'
 import { API_PEOPLE } from '@constants/api'
 import {
@@ -49,9 +50,19 @@ const PeoplePage = ({ setErrorApi }) => {
 
   useEffect(() => {
     getResource(API_PEOPLE + queryPage)
-  }, [queryPage])
+  }, [])
 
-  return <>{people && <PeopleList people={people} />}</>
+  return (
+    <>
+      <PeopleNavigation
+        getResource={getResource}
+        prevPage={prevPage}
+        nextPage={nextPage}
+        counterPage={counterPage}
+      />
+      {people && <PeopleList people={people} />}
+    </>
+  )
 }
 
 export default withErrorApi(PeoplePage)
