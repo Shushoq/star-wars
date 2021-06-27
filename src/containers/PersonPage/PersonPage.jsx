@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import PropTypes from 'prop-types'
 
 import withErrorApi from '@HOC/withErrorApi'
@@ -8,9 +8,13 @@ import { getPeopleImage } from '@services/getPeopleData'
 import PersonPhoto from '@components/PersonPage/PersonPhoto'
 import PersonInfo from '@components/PersonPage/PersonInfo'
 import PersonLinkBack from '@components/PersonPage/PersonLinkBack'
-import PersonFilms from '@components/PersonPage/PersonFilms'
 
 import style from './PersonPage.module.scss'
+import Loading from '@UI/Loading'
+
+const PersonFilms = React.lazy(() =>
+  import('@components/PersonPage/PersonFilms')
+)
 
 const PersonPage = ({ match, setErrorApi }) => {
   const [personInfo, setPersonInfo] = useState([])
@@ -47,7 +51,11 @@ const PersonPage = ({ match, setErrorApi }) => {
         <div className={style.container}>
           <PersonPhoto personPhoto={personPhoto} personName={personName} />
           {personInfo && <PersonInfo personInfo={personInfo} />}
-          {personFilms && <PersonFilms personFilms={personFilms} />}
+          {personFilms && (
+            <Suspense fallback={<Loading />}>
+              <PersonFilms personFilms={personFilms} />
+            </Suspense>
+          )}
         </div>
       </div>
     </>
