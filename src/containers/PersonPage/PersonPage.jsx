@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Suspense } from 'react'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 
 import withErrorApi from '@HOC/withErrorApi'
 import { getApiResource } from '@utils/network'
@@ -17,16 +18,23 @@ const PersonFilms = React.lazy(() =>
 )
 
 const PersonPage = ({ match, setErrorApi }) => {
+  const [personId, setpersonId] = useState(null)
   const [personInfo, setPersonInfo] = useState([])
   const [personName, setPersonName] = useState(null)
   const [personPhoto, setPersonPhoto] = useState(null)
   const [personFilms, setPersonFilms] = useState([])
+  const [personFavorite, setPersonFavorite] = useState(false)
+
+  const storeData = useSelector((state) => state.favoriteReducer)
 
   useEffect(() => {
     ;(async () => {
       const id = match.params.id
       const res = await getApiResource(`${API_PERSON}/${id}/`)
+      setpersonId(id)
       setErrorApi(!res)
+      storeData[id] ? setPersonFavorite(true) : setPersonFavorite(false)
+
       setPersonInfo([
         { title: 'Height', data: res.height },
         { title: 'Mass', data: res.mass },
@@ -49,7 +57,13 @@ const PersonPage = ({ match, setErrorApi }) => {
       <div className={style.wrapper}>
         <span className={style.name}>{personName}</span>
         <div className={style.container}>
-          <PersonPhoto personPhoto={personPhoto} personName={personName} />
+          <PersonPhoto
+            personId={personId}
+            personPhoto={personPhoto}
+            personName={personName}
+            personFavorite={personFavorite}
+            setPersonFavorite={setPersonFavorite}
+          />
           {personInfo && <PersonInfo personInfo={personInfo} />}
           {personFilms && (
             <Suspense fallback={<Loading />}>
