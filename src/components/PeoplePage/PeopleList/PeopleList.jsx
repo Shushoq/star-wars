@@ -7,7 +7,7 @@ import styles from './PeopleList.module.scss'
 const PeopleList = ({ people }) => {
   return (
     <ul className={styles.list}>
-      {people.map(({ name, url, id, image }) => (
+      {people.map(({ name, id, image }) => (
         <li className={styles.item} key={id}>
           <Link className={styles.link} to={`/people/${id}`}>
             <img className={styles.img} src={image} alt={name} />

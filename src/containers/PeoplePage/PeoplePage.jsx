@@ -35,7 +35,6 @@ const PeoplePage = ({ setErrorApi }) => {
           id,
           image,
           name,
-          url,
         }
       })
       setPeople(peopleList)

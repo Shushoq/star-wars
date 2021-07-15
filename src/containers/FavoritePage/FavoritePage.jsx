@@ -9,14 +9,27 @@ const FavoritePage = () => {
 
   useEffect(() => {
     const arr = Object.entries(storeData)
-    console.log(storeData)
-    console.log(arr)
+    if (arr.length) {
+      const res = arr.map((item) => {
+        return {
+          id: item[0],
+          image: item[1].personPhoto,
+          name: item[1].name,
+        }
+      })
+
+      setPeople(res)
+    }
   }, [])
 
   return (
     <>
-      <h1>Favorite page</h1>
-      <PeopleList people={people} />
+      <h1 className='title'>Favorites</h1>
+      {people.length ? (
+        <PeopleList people={people} />
+      ) : (
+        <h2 className={style.comment}>No data...</h2>
+      )}
     </>
   )
 }
