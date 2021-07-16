@@ -1,5 +1,8 @@
 import React from 'react'
 
+import Video from '@UI/Video';
+import video from './video/han-solo.mp4';
+
 import styles from './ErrorMessage.module.scss'
 
 const ErrorMessage = () => {
@@ -9,7 +12,7 @@ const ErrorMessage = () => {
         The dark side of the force has won. <br />
         We cannot display data
         <br />
-        Come back whe we fix everything.
+        <Video src={video} classes={styles.video} playbackRate={1.0} />.
       </p>
     </>
   )

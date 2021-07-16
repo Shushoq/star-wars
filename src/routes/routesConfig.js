@@ -2,8 +2,9 @@ import HomePage from '@containers/HomePage'
 import PeoplePage from '@containers/PeoplePage'
 import NotFoundPage from '@containers/NotFoundPage'
 import PersonPage from '@containers/PersonPage'
-import FavoritePage from '@containers/FavoritePage/'
-import SearchPage from '../containers/SearchPage/SearchPage'
+import FavoritePage from '@containers/FavoritePage'
+import SearchPage from '@containers/SearchPage'
+import ErrorMessage from '@components/ErrorMesage'
 
 const routesConfig = [
   {
@@ -30,6 +31,11 @@ const routesConfig = [
     path: '/search',
     exact: true,
     component: SearchPage,
+  },
+  {
+    path: '/fail',
+    exact: true,
+    component: ErrorMessage,
   },
   {
     path: '/not-found',
