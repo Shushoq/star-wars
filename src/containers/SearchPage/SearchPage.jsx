@@ -31,7 +31,6 @@ const SearchPage = ({ setErrorApi }) => {
           img,
         }
       })
-      console.log('response')
       setPeople(peopleList)
       setErrorApi(false)
     } else {

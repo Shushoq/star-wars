@@ -25,9 +25,9 @@
   "scripts": {
     "build": "react-app-rewired build",
     "build-gh-pages": "gh-pages -d build",
-    "deploy": "npm run build && npm run build-storybook && npm run build-gh-pages",
+    "deploy": "npm run build && npm run build-gh-pages",
     "build-storybook": "build-storybook -o ./build/storybook",
-    
+
     "start": "react-app-rewired start",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
