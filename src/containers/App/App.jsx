@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import REPO_NAME from '@constants/repo'
+import { REPO_NAME } from '@constants/repo'
 import Header from '@components/Header'
 import routesConfig from '@routes/routesConfig'
 
