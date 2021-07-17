@@ -7,6 +7,10 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.3",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "node-sass": "^6.0.1",
@@ -20,6 +24,7 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
+    "typescript": "^4.3.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -27,7 +32,6 @@
     "build-gh-pages": "gh-pages -d build",
     "deploy": "npm run build && npm run build-gh-pages",
     "build-storybook": "build-storybook -o ./build/storybook",
-
     "start": "react-app-rewired start",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
@@ -38,14 +42,16 @@
       "react-app",
       "react-app/jest"
     ],
-    "overrides": [{
-      "files": [
-        "**/*.stories.*"
-      ],
-      "rules": {
-        "import/no-anonymous-default-export": "off"
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
       }
-    }]
+    ]
   },
   "browserslist": {
     "production": [
